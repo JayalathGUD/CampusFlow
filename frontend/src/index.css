@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode selector strategy for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-300: #c084fc;
+  --color-brand-400: #a855f7;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+  --color-brand-800: #5b21b6;
+  --color-brand-900: #4c1d95;
+
+  /* Custom Design System Colors */
+  --color-cf-bg: #0B1020;
+  --color-cf-secondary: #111827;
+  --color-cf-card: #1A2236;
+  --color-cf-accent: #7C3AED;
+  --color-cf-cyan: #22D3EE;
+  
+  --color-cf-border: #1E293B;
+  --color-cf-border-light: rgba(255, 255, 255, 0.08);
+  
+  --color-cf-success: #10B981;
+  --color-cf-warning: #F59E0B;
+  --color-cf-error: #EF4444;
+  
+  --radius-cf-lg: 18px;
+  --radius-cf-xl: 20px;
+}
+
+body {
+  @apply bg-[#0B1020] text-slate-100 font-sans transition-colors duration-300;
+}
+
+/* Custom premium glassmorphism theme components */
+.glass-panel {
+  background: rgba(26, 34, 54, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dark .glass-panel {
+  background: rgba(26, 34, 54, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Design System Component Utilities for Tailwind v4 */
+@utility cf-button-primary {
+  @apply px-4 py-2 text-xs font-bold text-white bg-violet-600 hover:bg-violet-700 rounded-xl transition-all shadow-md shadow-violet-500/10 cursor-pointer flex items-center justify-center gap-1.5;
+}
+
+@utility cf-button-secondary {
+  @apply px-4 py-2 text-xs font-bold text-slate-400 hover:text-white bg-[#1A2236]/60 border border-slate-800/80 hover:border-slate-700 rounded-xl transition-all shadow-sm cursor-pointer flex items-center justify-center gap-1.5;
+}
+
+@utility cf-card {
+  @apply rounded-[18px] border border-slate-800/80 bg-[#1A2236]/50 shadow-lg backdrop-blur-md transition-all hover:border-slate-700/80 hover:bg-[#1A2236] text-left;
+}
+
+@utility cf-input {
+  @apply px-4 py-2 border border-slate-700/60 rounded-xl bg-transparent text-white text-xs focus:ring-2 focus:ring-violet-500 focus:outline-none transition-all placeholder-slate-500;
+}
+
+@utility cf-select {
+  @apply px-3 py-2 border border-slate-700/60 rounded-xl bg-[#1A2236] text-white text-xs focus:outline-none transition-all;
+}
+
+@utility cf-badge {
+  @apply text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full leading-none;
+}
+
+/* Gradient text adjustments for high accessibility and premium layout */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400;
+}
+
+.gradient-bg {
+  background: radial-gradient(circle at 10% 20%, rgb(99, 102, 241) 0%, rgb(168, 85, 247) 90%);
+}
+
+.gradient-border-glow {
+  position: relative;
+}
+
+.gradient-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(90deg, #8b5cf6, #ec4899, #3b82f6);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.7;
+  filter: blur(4px);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Call Interface Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(15px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.25s ease-out forwards;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2.5s ease-in-out infinite;
+}
