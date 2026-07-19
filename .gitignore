@@ -32,3 +32,19 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+# Backend
+backend/node_modules/
+backend/.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Upload files
+backend/uploads/
+
+# Runtime logs
+*.log
+
+# OS files
+Thumbs.db
