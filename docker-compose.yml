@@ -1,0 +1,71 @@
+services:
+
+  mongodb:
+    image: mongo:7
+    container_name: campusflow-mongo
+    restart: always
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      - mongo-data:/data/db
+
+    networks:
+      - campusflow-network
+
+
+  backend:
+    build:
+      context: ./backend
+
+    image: campusflow-backend
+
+    container_name: campusflow-backend
+
+    restart: always
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - ./backend/.env
+
+    depends_on:
+      - mongodb
+
+    networks:
+      - campusflow-network
+
+
+  frontend:
+    build:
+      context: ./frontend
+
+    image: campusflow-frontend
+
+    container_name: campusflow-frontend
+
+    restart: always
+
+    ports:
+      - "3000:80"
+
+    depends_on:
+      - backend
+
+    networks:
+      - campusflow-network
+
+
+
+networks:
+
+  campusflow-network:
+    driver: bridge
+
+
+
+volumes:
+
+  mongo-data:
