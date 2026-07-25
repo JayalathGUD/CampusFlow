@@ -16,10 +16,7 @@ services:
 
 
   backend:
-    build:
-      context: ./backend
-
-    image: campusflow-backend
+    image: ghcr.io/jayalathgud/campusflow-backend:latest
 
     container_name: campusflow-backend
 
@@ -38,11 +35,9 @@ services:
       - campusflow-network
 
 
-  frontend:
-    build:
-      context: ./frontend
 
-    image: campusflow-frontend
+  frontend:
+    image: ghcr.io/jayalathgud/campusflow-frontend:latest
 
     container_name: campusflow-frontend
 
