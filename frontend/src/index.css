@@ -34,16 +34,16 @@
 }
 
 body {
-  @apply bg-[#0B1020] text-slate-100 font-sans transition-colors duration-300;
+  @apply bg-slate-50 dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300;
 }
 
 /* Custom premium glassmorphism theme components */
 .glass-panel {
-  background: rgba(26, 34, 54, 0.65);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
 .dark .glass-panel {
@@ -60,19 +60,19 @@ body {
 }
 
 @utility cf-button-secondary {
-  @apply px-4 py-2 text-xs font-bold text-slate-400 hover:text-white bg-[#1A2236]/60 border border-slate-800/80 hover:border-slate-700 rounded-xl transition-all shadow-sm cursor-pointer flex items-center justify-center gap-1.5;
+  @apply px-4 py-2 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white bg-slate-100 dark:bg-[#1A2236]/60 border border-slate-200 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 rounded-xl transition-all shadow-sm cursor-pointer flex items-center justify-center gap-1.5;
 }
 
 @utility cf-card {
-  @apply rounded-[18px] border border-slate-800/80 bg-[#1A2236]/50 shadow-lg backdrop-blur-md transition-all hover:border-slate-700/80 hover:bg-[#1A2236] text-left;
+  @apply rounded-[18px] border border-slate-200 dark:border-slate-800/80 bg-white/70 dark:bg-[#1A2236]/50 shadow-lg backdrop-blur-md transition-all hover:border-slate-300 dark:hover:border-slate-700/80 hover:bg-white dark:hover:bg-[#1A2236] text-left;
 }
 
 @utility cf-input {
-  @apply px-4 py-2 border border-slate-700/60 rounded-xl bg-transparent text-white text-xs focus:ring-2 focus:ring-violet-500 focus:outline-none transition-all placeholder-slate-500;
+  @apply px-4 py-2 border border-slate-300 dark:border-slate-700/60 rounded-xl bg-white/50 dark:bg-transparent text-slate-800 dark:text-white text-xs focus:ring-2 focus:ring-violet-500 focus:outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500;
 }
 
 @utility cf-select {
-  @apply px-3 py-2 border border-slate-700/60 rounded-xl bg-[#1A2236] text-white text-xs focus:outline-none transition-all;
+  @apply px-3 py-2 border border-slate-300 dark:border-slate-700/60 rounded-xl bg-white dark:bg-[#1A2236] text-slate-800 dark:text-white text-xs focus:outline-none transition-all;
 }
 
 @utility cf-badge {
@@ -138,4 +138,60 @@ body {
 
 .animate-pulse-subtle {
   animation: pulseSubtle 2.5s ease-in-out infinite;
+}
+
+/* ==========================================
+   Light Mode Overrides (when html does NOT have .dark)
+   ========================================== */
+
+/* Background Color Mappings */
+html:not(.dark) [class*="bg-[#0B1020]"] {
+  background-color: #f8fafc !important; /* Slate 50 */
+}
+html:not(.dark) [class*="bg-[#111827]"] {
+  background-color: #ffffff !important; /* White */
+}
+html:not(.dark) [class*="bg-[#1A2236]"] {
+  background-color: #ffffff !important; /* White */
+}
+html:not(.dark) [class*="bg-[#1A2236]/80"] {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+html:not(.dark) [class*="bg-[#1A2236]/60"] {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+html:not(.dark) [class*="bg-[#1A2236]/50"] {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+html:not(.dark) [class*="bg-[#1A2236]/40"] {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
+html:not(.dark) [class*="bg-[#1A2236]/30"] {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+html:not(.dark) [class*="bg-[#1A2236]/20"] {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+html:not(.dark) [class*="bg-[#111827]/40"] {
+  background-color: rgba(241, 245, 249, 0.4) !important; /* Slate 100 with opacity */
+}
+html:not(.dark) [class*="bg-[#111827]/60"] {
+  background-color: rgba(241, 245, 249, 0.6) !important;
+}
+
+/* Border Mappings */
+html:not(.dark) [class*="border-slate-8"] {
+  border-color: #e2e8f0 !important; /* Slate 200 */
+}
+html:not(.dark) [class*="border-slate-7"] {
+  border-color: #cbd5e1 !important; /* Slate 300 */
+}
+
+/* Text Mappings: fallback to inheritance to preserve dark-container labels */
+html:not(.dark) [class*="text-slate-100"],
+html:not(.dark) [class*="text-slate-200"],
+html:not(.dark) [class*="text-slate-300"],
+html:not(.dark) [class*="text-slate-350"],
+html:not(.dark) [class*="text-slate-400"] {
+  color: inherit !important;
 }

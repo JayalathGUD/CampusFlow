@@ -59,7 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
   };
 
   return (
-    <aside className="w-64 border-r border-slate-800/80 bg-[#111827] h-screen flex flex-col justify-between py-6 flex-shrink-0">
+    <aside className="w-64 border-r border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#111827] h-screen flex flex-col justify-between py-6 flex-shrink-0 transition-colors duration-300">
       {/* Brand Header */}
       <div className="px-6 flex items-center justify-between mb-8 text-left">
         <div className="flex items-center gap-2">
@@ -67,14 +67,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
             CF
           </div>
           <div className="text-left">
-            <span className="font-bold text-slate-100 block text-sm tracking-wide">CAMPUSFLOW</span>
-            <span className="text-[10px] font-semibold text-slate-500 block tracking-wider uppercase">SaaS Academic Portal</span>
+            <span className="font-bold text-slate-800 dark:text-slate-100 block text-sm tracking-wide">CAMPUSFLOW</span>
+            <span className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 block tracking-wider uppercase">SaaS Academic Portal</span>
           </div>
         </div>
         {closeSidebar && (
           <button
             onClick={closeSidebar}
-            className="md:hidden p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
+            className="md:hidden p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-550 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -92,8 +92,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
           }}
           className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
             currentTab === 'dashboard' && !activeWorkspace
-              ? 'bg-violet-500/10 text-violet-400'
-              : 'text-slate-500 hover:text-slate-200 hover:bg-slate-800/40'
+              ? 'bg-violet-500/10 text-violet-500 dark:text-violet-400'
+              : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/40'
           }`}
         >
           <div className="flex items-center gap-2.5">
@@ -114,8 +114,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
           }}
           className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
             currentTab === 'portfolio'
-              ? 'bg-violet-500/10 text-violet-400'
-              : 'text-slate-500 hover:text-slate-200 hover:bg-slate-800/40'
+              ? 'bg-violet-500/10 text-violet-550 dark:text-violet-400'
+              : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/40'
           }`}
         >
           <div className="flex items-center gap-2.5">
@@ -132,8 +132,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
           }}
           className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
             currentTab === 'resources'
-              ? 'bg-violet-500/10 text-violet-400'
-              : 'text-slate-500 hover:text-slate-200 hover:bg-slate-800/40'
+              ? 'bg-violet-500/10 text-violet-550 dark:text-violet-400'
+              : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/40'
           }`}
         >
           <div className="flex items-center gap-2.5">
@@ -151,8 +151,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
             }}
             className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
               currentTab === 'admin'
-                ? 'bg-rose-500/10 text-rose-400'
-                : 'text-slate-500 hover:text-slate-200 hover:bg-slate-800/40'
+                ? 'bg-rose-500/10 text-rose-500 dark:text-rose-400'
+                : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/40'
             }`}
           >
             <div className="flex items-center gap-2.5">
@@ -167,13 +167,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
         {user && (
           <div className="pt-6 space-y-2">
             <div className="flex items-center justify-between px-3">
-              <span className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Active Workspaces</span>
+              <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-wider uppercase">Active Workspaces</span>
               <button
                 onClick={() => {
                   setIsJoinMode(false);
                   setShowWorkspaceModal(true);
                 }}
-                className="p-1 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-350 cursor-pointer"
+                className="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-700 dark:hover:text-slate-350 cursor-pointer transition-colors"
               >
                 <Plus className="w-3.5 h-3.5" />
               </button>
@@ -189,8 +189,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
                   }}
                   className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-left transition-colors cursor-pointer ${
                     activeWorkspace?._id === w._id
-                      ? 'bg-violet-500/10 text-violet-400'
-                      : 'text-slate-500 hover:text-slate-200 hover:bg-slate-800/40'
+                      ? 'bg-violet-500/10 text-violet-555 dark:text-violet-400'
+                      : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/40'
                   }`}
                 >
                   <Layers className="w-4 h-4 text-violet-500" />
@@ -204,13 +204,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
 
       {/* Workspace Create/Join Modal */}
       {showWorkspaceModal && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-[#1A2236] border border-slate-800 w-full max-w-md rounded-2xl shadow-2xl p-6 text-left">
-            <div className="flex border-b border-slate-800 pb-3 mb-5 justify-between">
+        <div className="fixed inset-0 bg-slate-950/40 dark:bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50">
+          <div className="bg-white dark:bg-[#1A2236] border border-slate-200 dark:border-slate-800 w-full max-w-md rounded-2xl shadow-2xl p-6 text-left transition-colors duration-300">
+            <div className="flex border-b border-slate-200 dark:border-slate-800 pb-3 mb-5 justify-between">
               <button
                 onClick={() => setIsJoinMode(false)}
                 className={`flex-1 text-center font-bold text-sm pb-2 border-b-2 transition-colors cursor-pointer ${
-                  !isJoinMode ? 'border-violet-600 text-violet-400' : 'border-transparent text-slate-500'
+                  !isJoinMode ? 'border-violet-600 text-violet-550 dark:text-violet-400' : 'border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-350'
                 }`}
               >
                 Create Workspace
@@ -218,7 +218,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
               <button
                 onClick={() => setIsJoinMode(true)}
                 className={`flex-1 text-center font-bold text-sm pb-2 border-b-2 transition-colors cursor-pointer ${
-                  isJoinMode ? 'border-violet-600 text-violet-400' : 'border-transparent text-slate-500'
+                  isJoinMode ? 'border-violet-600 text-violet-550 dark:text-violet-400' : 'border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-350'
                 }`}
               >
                 Join Workspace
@@ -274,7 +274,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
                   <button
                     type="button"
                     onClick={() => setShowWorkspaceModal(false)}
-                    className="px-4 py-2 text-xs font-bold rounded-xl hover:bg-slate-800 text-slate-400"
+                    className="px-4 py-2 text-xs font-bold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors"
                   >
                     Cancel
                   </button>
@@ -303,7 +303,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab, clo
                   <button
                     type="button"
                     onClick={() => setShowWorkspaceModal(false)}
-                    className="px-4 py-2 text-xs font-bold rounded-xl hover:bg-slate-800 text-slate-400"
+                    className="px-4 py-2 text-xs font-bold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors"
                   >
                     Cancel
                   </button>

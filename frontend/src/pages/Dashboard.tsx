@@ -156,7 +156,7 @@ export const Dashboard: React.FC = () => {
       : 0;
 
   return (
-    <div className="flex-1 overflow-y-auto bg-[#0B1020] p-6 space-y-6 text-left no-scrollbar">
+    <div className="flex-1 overflow-y-auto bg-transparent p-6 space-y-6 text-left no-scrollbar">
       
       {/* Welcome Banner */}
       {user ? (
@@ -166,7 +166,7 @@ export const Dashboard: React.FC = () => {
               Welcome back, {user.fullName || 'Student'}! <GraduationCap className="w-6 h-6 text-violet-300 animate-bounce" />
             </h2>
             <p className="text-xs text-slate-400 max-w-md">
-              Here is your academic overview for {user.university || 'University'}. You have {deadlines.length} upcoming deadlines this week.
+              Here is your academic overview for {user.university || 'University'}. You have {(deadlines || []).length} upcoming deadlines this week.
             </p>
           </div>
           
@@ -238,10 +238,10 @@ export const Dashboard: React.FC = () => {
           </div>
 
           <div className="space-y-3.5">
-            {deadlines.length === 0 ? (
+            {(deadlines || []).length === 0 ? (
               <p className="text-xs text-slate-500 py-6 text-center">No upcoming deadlines logged.</p>
             ) : (
-              deadlines.map((dl) => (
+              (deadlines || []).map((dl) => (
                 <div
                   key={dl._id}
                   className="flex justify-between items-center p-3 rounded-xl border border-slate-800/80 bg-[#111827]/40 hover:bg-[#111827]/70 transition-all text-left"
@@ -283,10 +283,10 @@ export const Dashboard: React.FC = () => {
           </div>
 
           <div className="space-y-3 max-h-56 overflow-y-auto no-scrollbar">
-            {workspaces.length === 0 ? (
+            {(workspaces || []).length === 0 ? (
               <p className="text-xs text-slate-500 py-6 text-center">No collaborative groups joined yet.</p>
             ) : (
-              workspaces.map((w) => (
+              (workspaces || []).map((w) => (
                 <div
                   key={w._id}
                   className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-[#111827]/40 transition-colors cursor-default text-left"
@@ -327,10 +327,10 @@ export const Dashboard: React.FC = () => {
           </div>
 
           <div className="space-y-3">
-            {personalTasks.length === 0 ? (
+            {(personalTasks || []).length === 0 ? (
               <p className="text-xs text-slate-500 py-6 text-center">No pending tasks assigned to you.</p>
             ) : (
-              personalTasks.map((t) => (
+              (personalTasks || []).map((t) => (
                 <div
                   key={t._id}
                   className="flex justify-between items-center p-3 border border-slate-800 rounded-xl hover:border-violet-500/30 transition-all bg-[#111827]/40 text-left group"
@@ -464,10 +464,10 @@ export const Dashboard: React.FC = () => {
           </div>
 
           <div className="space-y-4 text-left">
-            {recentActivity.length === 0 ? (
+            {(recentActivity || []).length === 0 ? (
               <p className="text-xs text-slate-500 py-6 text-center">No recent activity logged yet.</p>
             ) : (
-              recentActivity.map((activity, idx) => (
+              (recentActivity || []).map((activity, idx) => (
                 <div key={idx} className="flex gap-3 text-xs items-start">
                   <div className="w-2 h-2 rounded-full bg-violet-500 mt-1.5 flex-shrink-0"></div>
                   <div>

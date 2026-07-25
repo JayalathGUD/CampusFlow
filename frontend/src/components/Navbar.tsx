@@ -81,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   const unreadCount = notifications.filter(n => !n.isRead).length;
 
   return (
-    <header className="h-16 border-b border-slate-800/80 bg-[#111827] flex items-center justify-between px-6 relative z-30 text-left flex-shrink-0">
+    <header className="h-16 border-b border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#111827] flex items-center justify-between px-6 relative z-30 text-left flex-shrink-0 transition-colors duration-300">
       {/* Title or Workspace name */}
       <div className="flex items-center gap-3">
         <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-400">
@@ -101,15 +101,15 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
           <input
             type="text"
             placeholder="Search notes, tasks, library..."
-            className="w-64 pl-9 pr-4 py-1.5 rounded-full text-xs bg-[#1A2236]/80 border border-slate-850 outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 text-slate-100 placeholder-slate-500"
+            className="w-64 pl-9 pr-4 py-1.5 rounded-full text-xs bg-slate-100 dark:bg-[#1A2236]/80 border border-slate-250 dark:border-slate-850 outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-colors"
           />
-          <Search className="absolute left-3 top-2 w-3.5 h-3.5 text-slate-500" />
+          <Search className="absolute left-3 top-2 w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
         </div>
 
         {/* Dark/Light mode toggle */}
         <button
           onClick={toggleDarkMode}
-          className="p-2 rounded-full hover:bg-slate-800 text-slate-400 hover:text-slate-200 cursor-pointer"
+          className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer transition-colors"
         >
           {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
@@ -119,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
           <div ref={notifRef} className="relative">
             <button
               onClick={toggleNotifications}
-              className="p-2 rounded-full hover:bg-slate-800 text-slate-400 hover:text-white relative cursor-pointer"
+              className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white relative cursor-pointer transition-colors"
             >
               <Bell className="w-5 h-5" />
               {unreadCount > 0 && (
@@ -129,12 +129,12 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
 
             {/* Notifications Dropdown */}
             {showNotifications && (
-              <div className="absolute right-0 mt-3 w-80 rounded-xl shadow-2xl border border-slate-800 bg-[#1A2236] overflow-hidden z-20">
-                <div className="px-4 py-2.5 border-b border-slate-800 flex justify-between items-center bg-[#111827]/50">
-                  <span className="font-bold text-xs text-slate-200">Notifications</span>
+              <div className="absolute right-0 mt-3 w-80 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1A2236] overflow-hidden z-20 transition-all">
+                <div className="px-4 py-2.5 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50/80 dark:bg-[#111827]/50">
+                  <span className="font-bold text-xs text-slate-800 dark:text-slate-200">Notifications</span>
                   {unreadCount > 0 && <span className="text-[10px] text-violet-400 font-bold">{unreadCount} new</span>}
                 </div>
-                <div className="max-h-72 overflow-y-auto divide-y divide-slate-800">
+                <div className="max-h-72 overflow-y-auto divide-y divide-slate-200 dark:divide-slate-800">
                   {notifications.length === 0 ? (
                     <div className="px-4 py-8 text-center text-xs text-slate-500">No notifications</div>
                   ) : (
@@ -142,13 +142,13 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                       <div
                         key={n._id}
                         onClick={() => markNotificationRead(n._id)}
-                        className={`px-4 py-3 cursor-pointer text-left hover:bg-slate-800/30 transition-colors ${
+                        className={`px-4 py-3 cursor-pointer text-left hover:bg-slate-100 dark:hover:bg-slate-800/30 transition-colors ${
                           !n.isRead ? 'bg-violet-500/5' : ''
                         }`}
                       >
-                        <p className="text-xs font-bold text-slate-200">{n.title}</p>
-                        <p className="text-[10px] text-slate-400 mt-0.5">{n.message}</p>
-                        <p className="text-[9px] text-slate-500 mt-1">{new Date(n.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                        <p className="text-xs font-bold text-slate-800 dark:text-slate-200">{n.title}</p>
+                        <p className="text-[10px] text-slate-600 dark:text-slate-400 mt-0.5">{n.message}</p>
+                        <p className="text-[9px] text-slate-400 dark:text-slate-500 mt-1">{new Date(n.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
                       </div>
                     ))
                   )}
@@ -176,31 +176,31 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                   {user.fullName?.charAt(0).toUpperCase()}
                 </div>
               )}
-              <span className="hidden md:block text-xs font-bold text-slate-350 pr-1">
+              <span className="hidden md:block text-xs font-bold text-slate-650 dark:text-slate-350 pr-1">
                 {user.fullName?.split(' ')[0]}
               </span>
             </button>
 
             {showProfileMenu && (
-              <div className="absolute right-0 mt-3 w-48 rounded-xl shadow-2xl border border-slate-800 bg-[#1A2236] py-1.5 overflow-hidden z-20">
+              <div className="absolute right-0 mt-3 w-48 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1A2236] py-1.5 overflow-hidden z-20">
                 <a
                   href={`/portfolio/${user.id}`}
-                  className="flex items-center gap-2 px-4 py-2 text-xs text-slate-300 hover:bg-slate-800/50"
+                  className="flex items-center gap-2 px-4 py-2 text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50"
                 >
-                  <User className="w-3.5 h-3.5 text-slate-450" />
+                  <User className="w-3.5 h-3.5 text-slate-500 dark:text-slate-450" />
                   My Portfolio
                 </a>
                 <a
                   href="/settings"
-                  className="flex items-center gap-2 px-4 py-2 text-xs text-slate-300 hover:bg-slate-800/50"
+                  className="flex items-center gap-2 px-4 py-2 text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50"
                 >
-                  <Settings className="w-3.5 h-3.5 text-slate-450" />
+                  <Settings className="w-3.5 h-3.5 text-slate-500 dark:text-slate-450" />
                   Settings
                 </a>
-                <hr className="my-1 border-slate-800" />
+                <hr className="my-1 border-slate-200 dark:border-slate-800" />
                 <button
                   onClick={handleLogout}
-                  className="w-full flex items-center gap-2 px-4 py-2 text-xs text-rose-450 hover:bg-rose-950/20 text-left cursor-pointer"
+                  className="w-full flex items-center gap-2 px-4 py-2 text-xs text-rose-600 dark:text-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 text-left cursor-pointer"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   Logout

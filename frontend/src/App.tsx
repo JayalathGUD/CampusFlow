@@ -74,17 +74,17 @@ const App: React.FC = () => {
   if (isRegisterPage) return <Register />;
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-[#0B1020] text-slate-100 font-sans relative">
+    <div className="flex h-screen w-screen overflow-hidden bg-slate-50 dark:bg-[#0B1020] text-slate-800 dark:text-slate-100 font-sans relative transition-colors duration-300">
       
       {/* Mobile Top Bar */}
-      <div className="flex md:hidden h-14 bg-[#111827] border-b border-slate-800/80 items-center px-4 justify-between w-full flex-shrink-0 absolute top-0 left-0 z-30">
+      <div className="flex md:hidden h-14 bg-white dark:bg-[#111827] border-b border-slate-200 dark:border-slate-800/80 items-center px-4 justify-between w-full flex-shrink-0 absolute top-0 left-0 z-30 transition-colors duration-300">
         <button
           onClick={() => setSidebarOpen(true)}
-          className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
+          className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white cursor-pointer"
         >
           <Menu className="w-6 h-6" />
         </button>
-        <span className="font-bold text-sm tracking-wide text-white">CAMPUSFLOW</span>
+        <span className="font-bold text-sm tracking-wide text-slate-800 dark:text-white">CAMPUSFLOW</span>
         <div className="w-9 h-9 flex items-center justify-center">
           {/* User profile picture mini fallback */}
           {user && (
